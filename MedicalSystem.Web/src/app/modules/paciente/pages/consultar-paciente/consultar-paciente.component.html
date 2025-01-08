@@ -1,0 +1,75 @@
+<!-- Sidebar -->
+<div class="sidebar">
+  <app-sidebar></app-sidebar>
+</div>
+
+<!-- Conteúdo Principal -->
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row g-0">
+      <div class="col-12">
+        <div class="p-4">
+        <div class="header d-flex justify-content-between mb-4">
+          <h3>Consultar Pacientes</h3>
+          <button [routerLink]="['/cadastrar-paciente']" class="btn btn-success">
+            <i class="bi bi-person-plus-fill"> Cadastrar Paciente</i>
+          </button>
+        </div>
+
+        <div>
+          <input id="nomeFiltro" type="text" class="form-control" [(ngModel)]="filtroNome"
+            placeholder="Digite o nome do paciente" />
+        </div>
+
+        <table class="table table-hover mt-3">
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Nome</th>
+              <th>E-mail</th>
+              <th>DDD</th>
+              <th>Telefone</th>
+              <th>Data de Nascimento</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let paciente of pacientesPaginaAtual(); let i = index">
+              <td>{{ paciente.id }}</td>
+              <td>{{ paciente.nome }}</td>
+              <td>{{ paciente.email }}</td>
+              <td>{{ paciente.ddd }}</td>
+              <td>{{ paciente.telefone }}</td>
+              <td>{{ paciente.dataNascimento | date: 'dd/MM/yyyy' }}</td>
+              <td class="action-buttons">
+                <button [routerLink]="['/editar-paciente', paciente.id]" class="btn btn-icons btn-hover btn-warning btn-sm"
+                  data-bs-toggle="tooltip" title="Editar" (click)="hideTooltip($event)">
+                  <i class="fas fa-pencil-alt"></i>
+                </button>
+                <button [routerLink]="['/visualizar-prontuario', paciente.id]" class="btn btn-icons btn-hover btn-primary btn-sm"
+                  data-bs-toggle="tooltip" title="Prontuários" (click)="hideTooltip($event)">
+                  <i class="fas fa-file-alt"></i>
+                </button>
+                <button [routerLink]="['/agendar-consulta', paciente.id]" class="btn btn-icons btn-hover btn-success btn-sm"
+                  data-bs-toggle="tooltip" title="Agendamento" (click)="hideTooltip($event)">
+                  <i class="fas fa-calendar-alt"></i>
+                </button>
+                <button (click)="excluirPaciente(paciente, $event)" class="btn btn-icons btn-hover btn-danger btn-sm"
+                  data-bs-toggle="tooltip" title="Excluir">
+                  <i class="fas fa-trash-alt"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="pagination-controls text-center mt-4">
+          <button (click)="prevPage()" class="btn btn-danger" [disabled]="currentPage === 1">Anterior</button>
+          <span class="mx-3">Página {{ currentPage }}</span>
+          <button (click)="nextPage()" class="btn btn-primary"
+            [disabled]="currentPage * pageSize >= pacientesFiltrados().length">Próxima</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

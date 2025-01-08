@@ -1,0 +1,136 @@
+<!-- Sidebar -->
+<div class="sidebar">
+  <app-sidebar></app-sidebar>
+</div>
+
+<!-- Conteúdo Principal -->
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row g-0">
+      <div class="col-12">
+        <div class="p-4">
+          <h3 class="text-center mb-4">Editar Profissional</h3>
+
+          <form [formGroup]="cadastroForm" (ngSubmit)="onSubmit()">
+            <h5 class="mb-3"><i class="bi bi-person-fill"></i> Dados Pessoais</h5>
+
+            <div class="row mb-3">
+              <div class="col-md-6">
+                <label for="nome" class="form-label">Nome</label>
+                <input id="nome" formControlName="nome" class="form-control" type="text" placeholder="Digite o nome completo" />
+                <div *ngIf="cadastroForm.get('nome')?.invalid && cadastroForm.get('nome')?.touched">
+                  <small class="text-danger">O campo nome é obrigatório.</small>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <label for="email" class="form-label">Email</label>
+                <input id="email" formControlName="email" class="form-control" type="email" placeholder="Digite o email" />
+                <div *ngIf="cadastroForm.get('email')?.invalid && cadastroForm.get('email')?.touched">
+                  <small class="text-danger">Por favor, insira um email válido.</small>
+                </div>
+              </div>
+            </div>
+
+            <div class="row mb-3">
+              <div class="col-md-2">
+                <label for="ddd" class="form-label">DDD</label>
+                <input id="ddd" formControlName="ddd" class="form-control" type="tel" placeholder="Digite o DDD" (input)="formatarDDD()" />
+                <div *ngIf="cadastroForm.get('ddd')?.invalid && cadastroForm.get('ddd')?.touched">
+                  <small class="text-danger">O campo DDD é obrigatório.</small>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <label for="telefone" class="form-label">Telefone</label>
+                <input id="telefone" formControlName="telefone" class="form-control" type="tel" placeholder="Digite o telefone" (input)="formatarTelefone()" />
+                <div *ngIf="cadastroForm.get('telefone')?.invalid && cadastroForm.get('telefone')?.touched">
+                  <small class="text-danger">O campo telefone é obrigatório.</small>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <label for="dataNascimento" class="form-label">Data de Nascimento</label>
+                <input id="dataNascimento" formControlName="dataNascimento" class="form-control" type="date" />
+                <div *ngIf="cadastroForm.get('dataNascimento')?.invalid && cadastroForm.get('dataNascimento')?.touched">
+                  <small class="text-danger">O campo data de nascimento é obrigatório.</small>
+                </div>
+              </div>
+            </div>
+
+            <h5 class="mt-4 mb-3"><i class="bi bi-briefcase-fill"></i> Informações Profissionais</h5>
+
+            <div class="row mb-3">
+              <div class="col-md-6">
+                <label for="especialidade" class="form-label">Especialidade</label>
+                <input id="especialidade" formControlName="especialidade" class="form-control" type="text" placeholder="Digite a especialidade" />
+                <div *ngIf="cadastroForm.get('especialidade')?.invalid && cadastroForm.get('especialidade')?.touched">
+                  <small class="text-danger">O campo especialidade é obrigatório.</small>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <label for="registroProfissional" class="form-label">Registro Profissional</label>
+                <input id="registroProfissional" formControlName="registroProfissional" class="form-control" type="text" placeholder="Digite o registro profissional" />
+                <div *ngIf="cadastroForm.get('registroProfissional')?.invalid && cadastroForm.get('registroProfissional')?.touched">
+                  <small class="text-danger">O campo registro profissional é obrigatório.</small>
+                </div>
+              </div>
+            </div>
+
+            <h5 class="mt-4 mb-3"><i class="bi bi-house-fill"></i> Endereço</h5>
+
+            <div class="row mb-3">
+              <div class="col-md-2">
+                <label for="cep" class="form-label">CEP</label>
+                <input id="cep" formControlName="cep" class="form-control" type="text" placeholder="CEP" (input)="formatarCEP()" (blur)="consultarCEP()" />
+              </div>
+              <div class="col-md-8">
+                <label for="logradouro" class="form-label">Logradouro</label>
+                <input id="logradouro" formControlName="logradouro" class="form-control" type="text" placeholder="Rua/Av." />
+                <div *ngIf="cadastroForm.get('logradouro')?.invalid && cadastroForm.get('logradouro')?.touched">
+                  <small class="text-danger">O campo logradouro é obrigatório.</small>
+                </div>
+              </div>
+              <div class="col-md-2">
+                <label for="numero" class="form-label">Número</label>
+                <input id="numero" formControlName="numero" class="form-control" type="text" placeholder="Número" />
+                <div *ngIf="cadastroForm.get('numero')?.invalid && cadastroForm.get('numero')?.touched">
+                  <small class="text-danger">O campo número é obrigatório.</small>
+                </div>
+              </div>
+            </div>
+
+            <div class="row mb-3">
+              <div class="col-md-5">
+                <label for="bairro" class="form-label">Bairro</label>
+                <input id="bairro" formControlName="bairro" class="form-control" type="text" placeholder="Bairro" />
+                <div *ngIf="cadastroForm.get('bairro')?.invalid && cadastroForm.get('bairro')?.touched">
+                  <small class="text-danger">O campo bairro é obrigatório.</small>
+                </div>
+              </div>
+              <div class="col-md-5">
+                <label for="cidade" class="form-label">Cidade</label>
+                <input id="cidade" formControlName="cidade" class="form-control" type="text" placeholder="Cidade" />
+                <div *ngIf="cadastroForm.get('cidade')?.invalid && cadastroForm.get('cidade')?.touched">
+                  <small class="text-danger">O campo cidade é obrigatório.</small>
+                </div>
+              </div>
+              <div class="col-md-2">
+                <label for="uf" class="form-label">UF</label>
+                <input id="uf" formControlName="uf" class="form-control" type="text" placeholder="UF" />
+                <div *ngIf="cadastroForm.get('uf')?.invalid && cadastroForm.get('uf')?.touched">
+                  <small class="text-danger">O campo UF é obrigatório.</small>
+                </div>
+              </div>
+            </div>
+
+            <div class="d-flex justify-content-center mt-4">
+              <button class="btn btn-primary w-100" type="submit" [disabled]="cadastroForm.invalid">Editar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

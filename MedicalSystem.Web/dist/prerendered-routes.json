@@ -1,0 +1,15 @@
+{
+  "routes": [
+    "/cadastrar-paciente",
+    "/cadastrar-profissional",
+    "/cadastrar-usuario",
+    "/consulta-online",
+    "/consultar-agendamento",
+    "/consultar-paciente",
+    "/consultar-profissional",
+    "/consultar-usuario",
+    "/home",
+    "/login",
+    "/registrar"
+  ]
+}

@@ -1,0 +1,39 @@
+<!-- Sidebar -->
+<div class="sidebar">
+  <app-sidebar></app-sidebar>
+</div>
+
+<!-- Conteúdo Principal -->
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row g-0">
+      <div class="col-12">
+        <div class="p-4">
+        <h2 class="text-center mb-4">Visualizar Prontuário</h2>
+
+        <div class="form-group mb-4">
+          <label for="importarPDF" class="form-label fw-semibold">Importar PDF do Paciente</label>
+          <input type="file" id="importarPDF" (change)="importarPDF($event)" accept="application/pdf" class="form-control" />
+        </div>
+
+        <div class="pdf-list">
+          <h3 class="text-center mt-5 mb-3">Arquivos PDF</h3>
+          <ul class="list-group">
+            <li *ngFor="let pdf of getPaginatedPDFs()" class="list-group-item d-flex justify-content-between align-items-center">
+              {{ pdf.nome }}
+              <button (click)="visualizarPDF(pdf)" class="btn btn-hover btn-primary btn-sm">
+                <i class="fas fa-eye"></i> Visualizar
+              </button>
+            </li>
+          </ul>
+        </div>
+
+        <div class="pagination-controls text-center mt-4">
+          <button (click)="prevPage()" class="btn btn-danger" [disabled]="currentPage === 1">Anterior</button>
+          <span class="mx-3">Página {{ currentPage }}</span>
+          <button (click)="nextPage()" class="btn btn-primary" [disabled]="currentPage * pageSize >= pdfs.length">Próxima</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

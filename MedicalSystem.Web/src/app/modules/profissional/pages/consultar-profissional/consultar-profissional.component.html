@@ -1,0 +1,71 @@
+<!-- Sidebar -->
+<div class="sidebar">
+  <app-sidebar></app-sidebar>
+</div>
+
+<!-- Conteúdo Principal -->
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row g-0">
+      <div class="col-12">
+        <div class="p-4">
+        <div class="header d-flex justify-content-between mb-4">
+          <h3>Consultar Profissionais</h3>
+          <button [routerLink]="['/cadastrar-profissional']" class="btn btn-success">
+            <i class="bi bi-person-plus-fill"> Cadastrar Profissional</i>
+          </button>
+        </div>
+
+        <div>
+          <input id="nomeFiltro" type="text" class="form-control" [(ngModel)]="filtroNome"
+            placeholder="Digite o nome do profissional" />
+        </div>
+
+        <table class="table table-hover mt-3">
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Nome</th>
+              <th>Email</th>
+              <th>Especialidade</th>
+              <th>Registro Profissional</th>
+              <th>DDD</th>
+              <th>Telefone</th>
+              <th>Data de Nascimento</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let profissional of profissionaisPaginaAtual(); let i = index">
+              <td>{{ profissional.id }}</td>
+              <td>{{ profissional.nome }}</td>
+              <td>{{ profissional.email }}</td>
+              <td>{{ profissional.especialidade }}</td>
+              <td>{{ profissional.registroProfissional }}</td>
+              <td>{{ profissional.ddd }}</td>
+              <td>{{ profissional.telefone }}</td>
+              <td>{{ profissional.dataNascimento | date: 'dd/MM/yyyy' }}</td>
+              <td class="action-buttons">
+                <button [routerLink]="['/editar-profissional', profissional.id]" class="btn btn-hover btn-warning btn-sm"
+                  data-bs-toggle="tooltip" title="Editar" (click)="hideTooltip($event)">
+                  <i class="fas fa-pencil-alt"></i>
+                </button>
+                <button (click)="excluirProfissional(profissional, $event)" class="btn btn-hover btn-danger btn-sm"
+                  data-bs-toggle="tooltip" title="Excluir">
+                  <i class="fas fa-trash-alt"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="pagination-controls text-center mt-4">
+          <button (click)="prevPage()" class="btn btn-danger" [disabled]="currentPage === 1">Anterior</button>
+          <span class="mx-3">Página {{ currentPage }}</span>
+          <button (click)="nextPage()" class="btn btn-primary"
+            [disabled]="currentPage * pageSize >= profissionaisFiltrados().length">Próxima</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

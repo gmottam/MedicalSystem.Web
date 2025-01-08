@@ -1,0 +1,125 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #ffffff !important;
+}
+
+/* Icones de Formulários */
+.bi-person-fill,
+.bi-house-fill,
+.bi-briefcase-fill {
+  font-size: 1.2rem;
+  color: #007dfe;
+  margin-right: 5px;
+}
+
+
+/* Ajusta o conteúdo para a direita da sidebar */
+.main-content {
+  margin-left: 125px !important;
+  margin-right: 25px !important;
+  padding: 20px !important;
+  background-color: #ffffff !important;
+  border-radius: 10px !important;
+  box-shadow: 0 4px 8px rgba(0, 0, 01, 0.1) !important;
+  max-width: 100% !important;
+}
+
+/* Titulos */
+h3 {
+  color: #393939 !important;
+}
+
+h5 {
+  font-size: 1.1rem !important;
+  color: #595959 !important;
+  margin-bottom: 15px !important;
+}
+
+/* Formulário */
+.form-label {
+  font-weight: 600;
+  color: #595959;
+}
+
+.form-control {
+  border-radius: 6px;
+  box-shadow: none;
+  transition: border-color 0.2s;
+}
+
+.form-control:focus {
+  border-color: #007dfe;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+/* Text de aviso campos obrigatórios */
+.text-danger {
+  font-size: 0.85rem;
+  margin-top: 5px;
+}
+
+/* Remove o padding padrão */
+.container-fluid {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+/* Remove margens laterais */
+.row.g-0 {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+/* Botões padrões */
+.btn-warning {
+  background-color: orange !important;
+  color: white !important;
+}
+
+.btn-hover:hover {
+  opacity: 7 !important;
+  transform: scale(1.2) !important;
+}
+
+.action-buttons {
+  display: flex !important;
+  justify-content: start !important;
+  gap: 10px !important;
+}
+
+button[type="submit"] {
+  max-width: 50vh !important;
+}
+
+/* Botão */
+button[type="submit"] {
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 10px;
+  transition: background-color 0.2s;
+}
+
+button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+/* Botões de navegação */
+.pagination-controls button,
+.header button {
+  padding: 10px 20px !important;
+  font-size: 16px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: 10px !important;
+}
+
+.pagination-controls span {
+  font-size: 16px !important;
+  font-weight: bold !important;
+}
+
+.pagination-controls button[disabled] {
+  opacity: 0.5 !important;
+  cursor: not-allowed !important;
+}

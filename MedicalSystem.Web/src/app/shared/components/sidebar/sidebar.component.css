@@ -1,0 +1,53 @@
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100px;
+  height: 100vh;
+  padding-top: 20px;
+  z-index: 1000;
+  background-color: #007dfe;
+  border-radius: 0px 50px 50px 0px;
+}
+
+/* Estilo dos itens de navegação */
+.nav-link {
+  padding: 15px;
+  color: var(--bs-light);
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Estilo dos ícones */
+.nav-link i {
+  font-size: 1.5rem;
+  margin-right: 10px;
+}
+
+/* Efeito hover nos itens */
+.nav-link:hover {
+  background-color: var(--bs-light);
+  color: #007dfe;
+}
+
+/* Responsividade */
+@media (max-width: 767px) {
+  .sidebar {
+    position: absolute;
+    top: 0;
+    left: -250px;
+    width: 250px;
+    transition: 0.3s;
+  }
+
+  .sidebar.active {
+    left: 0;
+  }
+
+  .navbar-toggler {
+    display: block;
+  }
+}

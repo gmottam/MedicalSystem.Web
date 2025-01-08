@@ -1,0 +1,48 @@
+<!-- Sidebar -->
+<div class="sidebar">
+  <app-sidebar></app-sidebar>
+</div>
+
+<!-- Conteúdo Principal -->
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row g-0">
+      <div class="col-12">
+        <div class="p-4">
+        <h3 class="mb-4">Consulta On-line</h3>
+
+        <div class="video-section mb-4">
+          <div class="row mb-3">
+            <div class="col-12 col-md-6 mb-2">
+              <video #localVideo autoplay muted class="w-100 rounded border"></video>
+            </div>
+            <div class="col-12 col-md-6 mb-2">
+              <video #remoteVideo autoplay class="w-100 rounded border"></video>
+            </div>
+          </div>
+          <div class="text-center">
+            <button class="btn btn-primary mx-2"><i class="bi bi-camera-video-off-fill"></i> Ativar/Desativar Câmera</button>
+            <button class="btn btn-warning mx-2"><i class="bi bi-volume-mute-fill"></i> Ativar/Desativar Microfone</button>
+            <button class="btn btn-danger mx-2"><i class="bi bi-telephone-x-fill"></i> Finalizar Chamada</button>
+          </div>
+        </div>
+
+        <div class="chat-section mb-2">
+          <h3>Chat</h3>
+          <div class="messages border p-3 mb-3" style="max-height: 200px; overflow-y: auto;">
+            <div *ngFor="let message of messages">
+              <strong>{{ message.sender }}:</strong> {{ message.text }}
+            </div>
+          </div>
+          <input type="text" [(ngModel)]="newMessage" (keyup.enter)="sendMessage()" class="form-control" placeholder="Digite uma mensagem" />
+        </div>
+
+        <div class="notes-section mt-2">
+          <h3>Anotações</h3>
+          <textarea [(ngModel)]="consultaNotes" class="form-control mb-2" placeholder="Anotações da consulta" rows="4"></textarea>
+          <button class="btn btn-success" (click)="saveNotes()">Salvar Anotações</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,55 @@
+<!-- Sidebar -->
+<div class="sidebar">
+  <nav class="position-sticky pt-3">
+    <ul class="nav flex-column">
+
+      <!-- Início -->
+      <li class="nav-item">
+        <a class="nav-link d-flex align-items-center" routerLink="/home" 
+          data-bs-toggle="tooltip" title="Início" (click)="hideTooltip($event)">
+          <i class="fa-solid fa-house me-2"></i>
+        </a>
+      </li>
+
+      <!-- Agenda -->
+      <li class="nav-item">
+        <a class="nav-link d-flex align-items-center" routerLink="/consultar-agendamento"
+          data-bs-toggle="tooltip" title="Agendamentos" (click)="hideTooltip($event)">
+          <i class="fa-regular fa-calendar-days me-2"></i>
+        </a>
+      </li>
+
+      <!-- Consulta On-line -->
+      <li class="nav-item">
+        <a class="nav-link d-flex align-items-center" routerLink="/consulta-online"
+          data-bs-toggle="tooltip" title="Consulta On-line" (click)="hideTooltip($event)">
+          <i class="fa-solid fa-video me-2"></i>
+        </a>
+      </li>
+
+      <!-- Pacientes -->
+      <li class="nav-item">
+        <a class="nav-link d-flex align-items-center" routerLink="/consultar-paciente"
+          data-bs-toggle="tooltip" title="Pacientes" (click)="hideTooltip($event)">
+          <i class="fa-solid fa-users me-2"></i>
+        </a>
+      </li>
+
+      <!-- Profissionais -->
+      <li class="nav-item">
+        <a class="nav-link d-flex align-items-center" routerLink="/consultar-profissional"
+          data-bs-toggle="tooltip" title="Profissionais" (click)="hideTooltip($event)">
+          <i class="fa-solid fa-stethoscope me-2"></i>
+        </a>
+      </li>
+
+      <!-- Usuários -->
+      <li class="nav-item">
+        <a class="nav-link d-flex align-items-center" routerLink="/consultar-usuario"
+          data-bs-toggle="tooltip" title="Usuários" (click)="hideTooltip($event)">
+          <i class="fa-solid fa-user-gear me-2"></i>
+        </a>
+      </li>
+    </ul>
+  </nav>
+</div>

@@ -1,0 +1,112 @@
+<!-- Sidebar -->
+<div class="sidebar">
+  <app-sidebar></app-sidebar>
+</div>
+
+<!-- Conteúdo Principal -->
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row g-0">
+      <div class="col-12">
+        <div class="p-4">
+        <h3 class="text-center mb-4">Agendar Consulta</h3>
+
+        <form (ngSubmit)="onSubmit()" #agendamentoForm="ngForm">
+          <!-- Seleção de Paciente e Profissional -->
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <label for="profissional" class="form-label">Nome Profissional</label>
+              <input type="text" id="profissional" class="form-control" [(ngModel)]="agendamento.profissionalId" name="profissionalId" readonly />
+            </div>
+            <div class="col-md-6">
+              <label for="paciente" class="form-label">Nome Paciente</label>
+              <input type="text" id="paciente" class="form-control" [(ngModel)]="agendamento.pacienteId" name="pacienteId" readonly />
+            </div>
+          </div>
+
+          <!-- Data e Hora da Consulta -->
+          <div class="row mb-3">
+            <div class="col-md-4">
+              <label for="data" class="form-label">Data da Consulta</label>
+              <input type="date" id="data" class="form-control" [(ngModel)]="agendamento.data" name="data" required />
+              <div *ngIf="agendamentoForm.form.get('data')?.invalid && agendamentoForm.form.get('data')?.touched">
+                <small class="text-danger">A data é obrigatória.</small>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <label for="inicio" class="form-label">Horário de Início</label>
+              <input type="time" id="inicio" class="form-control" [(ngModel)]="agendamento.inicio" name="inicio" required />
+              <div *ngIf="agendamentoForm.form.get('inicio')?.invalid && agendamentoForm.form.get('inicio')?.touched">
+                <small class="text-danger">O horário de início é obrigatório.</small>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <label for="fim" class="form-label">Horário de Fim</label>
+              <input type="time" id="fim" class="form-control" [(ngModel)]="agendamento.fim" name="fim" required />
+              <div *ngIf="agendamentoForm.form.get('fim')?.invalid && agendamentoForm.form.get('fim')?.touched">
+                <small class="text-danger">O horário de fim é obrigatório.</small>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tipo de Consulta e Status -->
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <label for="tipoConsulta" class="form-label">Tipo de Consulta</label>
+              <select id="tipoConsulta" class="form-control" [(ngModel)]="agendamento.tipoConsulta" name="tipoConsulta" required>
+                <option value="" disabled>Selecione o tipo de consulta</option>
+                <option value="Presencial">Presencial</option>
+                <option value="Online">Online</option>
+              </select>
+              <div *ngIf="agendamentoForm.form.get('tipoConsulta')?.invalid && agendamentoForm.form.get('tipoConsulta')?.touched">
+                <small class="text-danger">O tipo de consulta é obrigatório.</small>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <label for="status" class="form-label">Status</label>
+              <select id="status" class="form-control" [(ngModel)]="agendamento.status" name="status" required>
+                <option value="" disabled>Selecione o status</option>
+                <option value="Confirmado">Confirmado</option>
+                <option value="Pendente">Pendente</option>
+                <option value="Cancelado">Cancelado</option>
+              </select>
+              <div *ngIf="agendamentoForm.form.get('status')?.invalid && agendamentoForm.form.get('status')?.touched">
+                <small class="text-danger">O status é obrigatório.</small>
+              </div>
+            </div>
+          </div>
+
+          <!-- Observações e Notificação -->
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <label for="diagnostico" class="form-label">Diagnóstico do Paciente</label>
+              <textarea id="diagnostico" class="form-control" [(ngModel)]="agendamento.diagnostico" name="diagnostico" rows="4"></textarea>
+            </div>
+
+            <div class="col-md-6">
+              <label for="observacoes" class="form-label">Observações</label>
+              <textarea id="observacoes" class="form-control" [(ngModel)]="agendamento.observacoes" name="observacoes" rows="4"></textarea>
+            </div>
+          </div>
+
+          <div class="form-check mb-3">
+            <input class="form-check-input" type="checkbox" id="notificar" [(ngModel)]="agendamento.notificar" name="notificar" />
+            <label class="form-check-label" for="notificar">
+              Notificar paciente por e-mail
+            </label>
+          </div>
+
+          <!-- Botão de Submissão -->
+          <div class="d-flex justify-content-center mt-4">
+            <button class="btn btn-primary w-100" type="submit" [disabled]="!agendamentoForm.form.valid">
+              Agendar Consulta
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

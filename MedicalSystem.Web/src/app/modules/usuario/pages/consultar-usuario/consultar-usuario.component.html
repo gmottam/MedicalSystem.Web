@@ -1,0 +1,67 @@
+<!-- Sidebar -->
+<div class="sidebar">
+  <app-sidebar></app-sidebar>
+</div>
+
+<!-- Conteúdo Principal -->
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row g-0">
+      <div class="col-12">
+        <div class="p-4">
+        <div class="header d-flex justify-content-between mb-4">
+          <h3>Consultar Usuários</h3>
+          <button [routerLink]="['/cadastrar-usuario']" class="btn btn-success">
+            <i class="bi bi-person-plus-fill"> Cadastrar Usuário</i>
+          </button>
+        </div>
+
+        <div>
+          <input id="nomeFiltro" type="text" class="form-control" [(ngModel)]="filtroNome"
+            placeholder="Digite o nome do usuário" />
+        </div>
+
+        <table class="table table-hover mt-3">
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Nome</th>
+              <th>E-mail</th>
+              <th>Username</th>
+              <th>Cargo</th>
+              <th>DDD</th>
+              <th>Telefone</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let usuario of usuariosPaginaAtual(); let i = index">
+              <td>{{ usuario.id }}</td>
+              <td>{{ usuario.nome }}</td>
+              <td>{{ usuario.email }}</td>
+              <td>{{ usuario.username }}</td>
+              <td>{{ getCargoDescricao(usuario.cargo) }}</td>
+              <td>{{ usuario.ddd }}</td>
+              <td>{{ usuario.telefone }}</td>
+              <td class="action-buttons">
+                <button [routerLink]="['/editar-usuario', usuario.id]" class="btn btn-hover btn-warning btn-sm">
+                  <i class="fas fa-pencil-alt"></i>
+                </button>
+                <button (click)="excluirUsuario(usuario, $event)" class="btn btn-hover btn-danger btn-sm">
+                  <i class="fas fa-trash-alt"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="pagination-controls text-center mt-4">
+          <button (click)="prevPage()" class="btn btn-danger" [disabled]="currentPage === 1">Anterior</button>
+          <span class="mx-3">Página {{ currentPage }}</span>
+          <button (click)="nextPage()" class="btn btn-primary"
+            [disabled]="currentPage * pageSize >= usuariosFiltrados().length">Próxima</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
